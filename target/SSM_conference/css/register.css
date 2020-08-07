@@ -1,0 +1,65 @@
+.one{
+    background-image:url(images/beijing.jpg);
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+.start{
+    width:100%;
+    text-align:center;
+}
+.start0{
+    width:40%;
+    height:500px;
+    margin: 100px auto;
+    background: azure;
+    border: 5px solid aqua;
+    opacity:0.7;
+    border-radius: 10px;
+}
+.xitong{
+    background-color: black;
+    color: white;
+    height: 110px;
+    border-radius: 5px;
+}
+.start1{
+    font-size: 19px;
+    width: 80px;
+    height: 25px;
+}
+#zi1{
+    font-size: 25px;
+}
+#zi2{
+    font-size: 16px;
+}
+.biao{
+    margin-top: -90px;
+    font-size:18px;
+}
+#submit{
+    font-size: 20px;
+    float: right;
+    margin-right: 20px;
+}
+#submit:hover{
+    background-color: aqua;
+}
+#checkCode {
+    height: 25px;
+    background-image: url(images/check.png);
+    font-family: Arial;
+    font-style: italic;
+    color: white;
+    border: 0;
+    padding: 2px 3px;
+    letter-spacing: 3px;
+    font-weight: bolder;
+}
+#input1{
+    font-size: 14px;
+}
+.unchanged {
+    border: 0;
+}

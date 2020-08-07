@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wincom.mapper.RoomMapper">
+    <!--    User对象与user表之间的映射方式-->
+    <resultMap id="BaseResultMap" type="com.wincom.domain.Room">
+        <id column="room_id" property="room_id" jdbcType="INTEGER"/>
+        <result column="room_name" property="room_name" jdbcType="VARCHAR"/>
+        <result column="room_place" property="room_place" jdbcType="VARCHAR"/>
+        <result column="room_number" property="room_number" jdbcType="INTEGER"/>
+    </resultMap>
+    <!--    以id为条件查询User表-->
+    <select id="getRoomById" resultMap="BaseResultMap"
+            parameterType="java.lang.Integer">
+        select
+        room_id,room_name,room_place,room_number
+        from room
+        where room_id=#{room_id}
+    </select>
+
+    <insert id="save" parameterType="com.wincom.domain.Room">
+        insert into room(room_id,room_name,room_place,room_number)
+        values(#{room_id},#{room_name},#{room_place},#{room_number})
+    </insert>
+
+    <select id="findroom" resultMap="BaseResultMap">
+        select*from room where room_id=#{room_id}
+    </select>
+
+    <select id="getallroom" resultMap="BaseResultMap">
+        select*from room
+    </select>
+
+    <delete id="deleteroom" parameterType="com.wincom.domain.Room">
+        delete from room where room_id=#{room_id}
+    </delete>
+
+    <update id="updateroom" parameterType="com.wincom.domain.Room">
+        update room set room_name=#{room_name},room_number=#{room_number},room_place=#{room_place} where room_id=#{room_id}
+    </update>
+</mapper>

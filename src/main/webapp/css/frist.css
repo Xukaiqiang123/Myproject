@@ -1,0 +1,168 @@
+*
+{ margin:0px;
+    padding:0px;
+}
+.beijing{
+    width: 100%;
+    height: 100%;
+    background-color:gainsboro;
+}
+.left{
+    pointer-events: none;
+    background-color:midnightblue;
+    height: 100%;
+    margin-left: 0px;
+    margin-top: 0px;
+    position:fixed;
+    width:160px;
+    z-index: 1;
+}
+#nav{
+    pointer-events:none;
+    z-index: 20;
+}
+#nav ul{
+    pointer-events: none;
+    margin-top: 20px;
+    margin-left:14px;
+    padding:20px;
+    list-style:none;
+}
+#nav ul a
+{
+    pointer-events: auto;
+    color:white;
+    z-index: 99;
+    font-family:"宋体";
+    font-size:20px;
+}
+.right{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+.right_top{
+    background-color: white;
+    height: 60px;
+    margin-left: 160px;
+    width: 100%;
+    margin-top: 0px;
+    position: relative;
+}
+.right_top ul li{
+    width: 140px;
+    float: left;
+    list-style: none;
+    text-align: center;
+}
+.right_top ul li img{
+    width: 80px;
+    height: 35px;
+}
+.right_top_right{
+    width: 50px;
+    height: 60px;
+    float: right;
+    text-align: center;
+    margin-right: 20px;
+    font-size: 15px;
+}
+.right_top_left{
+    float: right;
+    font-size: 13px;
+    margin-right: 190px;
+    width: 30px;
+    height: 60px;
+}
+#user{
+    width: 20px;
+    height: 30px;
+    margin-top: 5px;
+}
+#tuichu img{
+    width: 30px;
+    height: 25px;
+    margin-top: 10px;
+}
+#dao{
+    font-size: 14px;
+}
+#dao1{
+    font-size: 14px;
+}
+#dao2{
+    font-size: 14px;
+}
+#biaozhi{
+    width: 160px;
+    height: 100px;
+}
+
+.right_bottom{
+    background-color: white;
+    height: 700px;
+    margin-left: 170px;
+    width: 1040px;
+    margin-top: 20px;
+    position: relative;
+}
+.list{
+    background-color: whitesmoke;
+    float: left;
+    position: relative;
+    margin-top: 10px;
+    margin-left: 20px;
+    width:990px;
+    height:650px;
+    border:honeydew 1px solid;
+    border-radius:15px;
+    text-align:center;
+}
+.look1{
+    background-color: white;
+    width:990px;
+    border:1px solid black;
+}
+#begin{
+    background-color: paleturquoise;
+}
+#begin th{
+    border:1px dotted black;
+}
+.look1 td {
+    border:1px dotted black;
+    padding:0 2px 0;
+    width:100px;
+}
+#submit{
+    font-size: 18px;
+}
+#submit:hover{
+    background-color: aqua;
+}
+#quxiao {
+    font-size: 18px;
+}
+#quxiao:hover{
+    background-color: aqua;
+}
+#become:hover {
+    background: #cc0;
+}
+.finally{
+    background-color: #3c3c3c;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    height: 50px;
+    width: 100%;
+    margin-bottom:0px ;
+    float: bottom;
+}
+.editmy{
+    width:50px;
+    background-color: yellow;
+}
+.btn:active {
+    top: 1px;
+}

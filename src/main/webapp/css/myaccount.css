@@ -1,0 +1,16 @@
+.look{
+    width:600px;
+    height: 250px;
+    font-size: 20px;
+    border:1px solid black;
+}
+table td{
+    border:1px dotted black;
+    padding:0 2px 0;
+}
+table tr{
+    background-color: white;
+}
+table tr.a1{
+    background-color:#e8f3fd;
+}

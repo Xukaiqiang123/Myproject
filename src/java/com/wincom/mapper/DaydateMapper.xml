@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wincom.mapper.DaydateMapper">
+    <resultMap id="DayResultMap" type="com.wincom.domain.Daydate">
+        <result column="mouth" property="mouth" jdbcType="VARCHAR"/>
+        <result column="count" property="count" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="selectday" resultMap="DayResultMap">
+        select
+            a.date as mouth,ifnull(b.count,0) as count
+             from
+            (
+            SELECT CONCAT('01') AS date UNION
+            SELECT CONCAT('02') AS date UNION
+            SELECT CONCAT('03') AS date UNION
+            SELECT CONCAT('04') AS date UNION
+            SELECT CONCAT('05') AS date UNION
+            SELECT CONCAT('06') AS date UNION
+            SELECT CONCAT('07') AS date UNION
+            SELECT CONCAT('08') AS date UNION
+            SELECT CONCAT('09') AS date UNION
+            SELECT CONCAT('10') AS date UNION
+            SELECT CONCAT('11') AS date UNION
+            SELECT CONCAT('12') AS date
+            )a
+            left join
+            (select  count(*) count,starttime from conference
+            where date_format(starttime, '%Y') = #{year}) b
+            on a.date = date_format(starttime, '%m')
+            where  date IN (01,02,03,04,05,06,07,08,09,10,11,12)
+            ORDER BY FIND_IN_SET(date,'01,02,03,04,05,06,07,08,09,10,11,12')
+    </select>
+</mapper>

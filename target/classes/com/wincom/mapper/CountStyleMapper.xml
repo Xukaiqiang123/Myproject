@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wincom.mapper.CountStyleMapper">
+    <resultMap id="DayResultMap" type="com.wincom.domain.CountStyle">
+        <result column="conferencestyle" property="conferencestyle" jdbcType="VARCHAR"/>
+        <result column="count" property="count" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="selectstyle" resultMap="DayResultMap">
+        select conference_style,count(*) as count from conference group by
+        FIND_IN_SET(conference_style,'全体会议,例会,紧急会议,其他')
+    </select>
+</mapper>

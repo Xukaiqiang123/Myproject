@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wincom.mapper.ConferenceMapper">
+
+    <resultMap id="BaseResultMap" type="com.wincom.domain.Conference">
+        <id column="conference_id" property="conference_id" jdbcType="INTEGER"/>
+        <result column="conference_name" property="conference_name" jdbcType="VARCHAR"/>
+        <result column="conference_people" property="conference_people" jdbcType="INTEGER"/>
+        <result column="user_id" property="user_id" jdbcType="INTEGER"/>
+        <result column="room_id" property="room_id" jdbcType="INTEGER"/>
+        <result column="starttime" property="starttime" jdbcType="VARCHAR"/>
+        <result column="endtime" property="endtime" jdbcType="VARCHAR"/>
+        <result column="sendway" property="sendway" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="conference_state" property="conference_state" jdbcType="VARCHAR"/>
+        <result column="conference_style" property="conference_style" jdbcType="VARCHAR"/>
+
+        <association property="user" javaType="com.wincom.domain.User">
+            <id column="id" property="id" jdbcType="VARCHAR"/>
+            <result column="username" property="username" jdbcType="VARCHAR"/>
+        </association>
+        <association property="room" javaType="com.wincom.domain.Room">
+            <id column="room_id" property="room_id" jdbcType="INTEGER"/>
+            <result column="room_name" property="room_name" jdbcType="VARCHAR"/>
+        </association>
+    </resultMap>
+    <sql id="conferences">
+        a.conference_id,
+        a.conference_name,
+        a.conference_people,
+        a.content,
+        a.conference_style,
+        a.user_id as "user.id",
+        b.username as "user.username",
+        a.room_id as "room.room_id",
+        c.room_name as "room.room_name",
+        a.starttime,
+        a.endtime,
+        a.sendway
+    </sql>
+    <sql id="conferenceJoins">
+        left join user b on b.id=a.user_id
+        left join room c on c.room_id=a.room_id
+    </sql>
+
+    <!--    1根据id查询信息-->
+    <select id="getmyconference" resultMap="BaseResultMap">
+        select*from conference where user_id=#{user_id}
+        order by endtime
+    </select>
+
+    <!--    1根据id查询信息-->
+    <select id="getConferenceById" resultMap="BaseResultMap">
+        select*
+        from conference
+        where conference_id =#{conference_id}
+        order by endtime
+    </select>
+
+    <insert id="save" parameterType="com.wincom.domain.Conference">
+        insert into conference(conference_id,conference_name,conference_people,content,starttime,endtime,user_id,room_id,sendway,conference_style)
+        values(#{conference_id},#{conference_name},#{conference_people},#{content},#{starttime},#{endtime},#{user_id},#{room_id},#{sendway},#{conference_style})
+    </insert>
+
+    <select id="getconferenceByafter" resultMap="BaseResultMap">
+        select*
+        from conference
+        where
+        TIMESTAMPDIFF(MINUTE,endtime,now())>0
+        order by endtime
+    </select>
+
+
+    <select id="getconferenceBycometime" resultMap="BaseResultMap">
+        select*from conference
+        where
+         now()>starttime
+        and endtime>now()
+        order by endtime
+    </select>
+
+    <select id="getconferenceall" resultMap="BaseResultMap">
+        select*
+        from conference
+        order by endtime
+    </select>
+
+    <select id="getconferencebyroom" resultMap="BaseResultMap">
+        select*from conference
+        where room_id=#{room_id}
+        order by endtime
+    </select>
+
+    <select id="getconferencebyname" resultMap="BaseResultMap">
+        select*from conference
+        where conference_name=#{comference_name}
+        order by endtime
+    </select>
+
+    <select id="getconferencebyusername" resultMap="BaseResultMap">
+        select*from conference
+        where user_id=#{user_id}
+         order by endtime
+    </select>
+
+    <update id="updateconference" parameterType="com.wincom.domain.Conference">
+        update conference set conference_name=#{conference_name},conference_people=#{conference_people},
+        conference_style=#{conference_style},sendway=#{sendway},starttime=#{starttime},user_id=#{user_id},room_id=#{room_id},
+        endtime=#{endtime},content=#{content} where conference_id=#{conference_id}
+    </update>
+
+    <delete id="deleteconference" parameterType="com.wincom.domain.Conference">
+        delete from conference where conference_id=#{conference_id}
+    </delete>
+
+    <select id="checkuse" resultMap="BaseResultMap">
+     select*from conference where room_id=#{room_id} and conference_state='进行中'
+  </select>
+</mapper>

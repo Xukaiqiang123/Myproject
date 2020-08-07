@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wincom.mapper.UserMapper">
+    <!--    User对象与user表之间的映射方式-->
+    <resultMap id="BaseResultMap" type="com.wincom.domain.User">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="position" property="position" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="power" property="power" jdbcType="VARCHAR"/>
+        <result column="user_style" property="user_style" jdbcType="VARCHAR"/>
+    </resultMap>
+    <!--    以id为条件查询User表-->
+    <select id="getUserById" resultMap="BaseResultMap"
+            parameterType="java.lang.Integer">
+        select
+        id,username,phone,position,email,password,power,user_style
+        from user
+        where id=#{id}
+    </select>
+    <!--    以name为条件查询User表-->
+    <select id="getUserByname" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        id,username,phone,position,email,password,power,user_style
+        from user
+        where username=#{username}
+    </select>
+
+    <select id="login" resultMap="BaseResultMap">
+     select*from user where id=#{id} and password=#{password}
+  </select>
+
+    <select id="find" resultMap="BaseResultMap">
+     select*from user where id=#{id}
+  </select>
+
+    <insert id="save" parameterType="com.wincom.domain.User">
+        insert into user(id,username,password,phone,position,email,power,user_style) values(#{id},#{username},#{password},#{phone},#{position},#{email},#{power},#{user_style})
+    </insert>
+
+    <update id="update" parameterType="com.wincom.domain.User">
+        update user set username=#{username},position=#{position},phone=#{phone},
+        email=#{email} where id=#{id}
+    </update>
+
+    <update id="updateusers" parameterType="com.wincom.domain.User">
+        update user set username=#{username},power=#{power},position=#{position},phone=#{phone},
+        email=#{email},user_style=#{user_style} where id=#{id}
+    </update>
+
+    <update id="updatepassword" parameterType="com.wincom.domain.User">
+        update user set password=#{password} where id=#{id}
+    </update>
+
+    <select id="getallUser" resultMap="BaseResultMap">
+        select*from user
+    </select>
+
+    <delete id="deleteuser" parameterType="com.wincom.domain.User">
+        delete from user where id=#{id}
+    </delete>
+
+</mapper>

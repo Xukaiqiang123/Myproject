@@ -1,0 +1,109 @@
+.book_list {
+    /* text-align: center; */
+    position: relative;
+
+}
+
+table {
+    margin: auto;
+    width: 80%;
+    background-color: aliceblue;
+    border-radius: 5px;
+}
+table th {
+    height:30px;
+    background-color: peru;
+    color:black;
+}
+tr{
+    height: 35px;
+}
+
+.btn {
+    margin-left: 20px;
+    border-radius: 3px;
+    border: 1px;
+    width: 50px;
+    color: white;
+    position: relative;
+    box-shadow: 2px 2px 2px #888888;
+}
+.check{
+    width:100px;
+    background-color: yellow;
+}
+.edit{
+    width:45px;
+    background-color: yellow;
+}
+.btn:active {
+    top: 1px;
+}
+
+.delete{
+    width:45px;
+    background-color: greenyellow;
+}
+
+.popup_wrap {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.popup_head{
+    padding: 5px;
+    background: #8d8c8c;
+    color: white;
+}
+.popup_content {
+    background: #eeeeee;
+    width: 400px;
+    z-index: 1;
+    margin: 12% auto;
+    overflow: auto;
+    border-radius: 5px;
+    height: 200px;
+}
+.popup_main{
+    background: #eeeeee;
+    margin: auto;
+    height: 100px;
+    padding: 0 10px;
+}
+main {
+    text-align: center;
+    padding-top: 50px;
+    min-height: 100%;
+    padding-bottom: 50px;
+}
+
+#close_button {
+    float: right;
+    font-size: 15px;
+    width: 30px;
+    background-color: red;
+}
+.book_id{
+    display: none;
+}
+.return_btn{
+    background-color: rgb(74, 200, 255);
+    color: black;
+}
+#become:hover {
+    background: #cc0;
+}
+.finally{
+    background-color: #3c3c3c;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    height: 50px;
+    width: 100%;
+    margin-bottom:0px ;
+    float: bottom;
+}

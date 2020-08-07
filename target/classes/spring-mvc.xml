@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/mvc
+           http://www.springframework.org/schema/mvc/spring-mvc.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--自动扫描该包，使Spring MVC认为包下使用了@Controller注解的是控制器-->
+    <context:component-scan base-package="com.wincom.controller"/>
+    <!--    if you use annotation you must configure following setting-->
+    <mvc:annotation-driven />
+    <!--    配置静态资源，直接映射到对应的文件夹不被DispatcherServlet处理-->
+    <mvc:resources mapping="/images/**" location="/images/" />
+    <mvc:resources mapping="/js/**" location="/js/" />
+    <mvc:resources mapping="/css/**" location="/css/" />
+    <mvc:resources mapping="/html/**" location="/html/" />
+    <!--    定义跳转的文件的前后缀，视图模式配置-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--        这里的配置是自动给后面action的方法return的字符串加上后缀和前缀，变成一个可用的url地址-->
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp" />
+    </bean>
+</beans>

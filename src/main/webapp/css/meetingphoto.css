@@ -1,0 +1,25 @@
+.right_bottom0{
+    background-color: white;
+    height: 700px;
+    margin-left: 170px;
+    width: 1040px;
+    margin-top: 20px;
+    position: relative;
+}
+.top{
+    height :120px;
+    display:flex;
+    justify-content:center;
+    text-align: center;
+}
+.bottom{
+    height :550px;
+    background-color: snow;
+    display:flex;
+    justify-content:center;
+    text-align: center;
+}
+#submit1{
+    width:60px;
+    height: 30px;
+}
